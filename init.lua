@@ -3,8 +3,16 @@
 -- Asegúrate de que 'lazy.nvim' esté en el runtimepath
 vim.opt.runtimepath:append(vim.fn.stdpath('data') .. '/site/pack/packer/start/lazy.nvim')
 
+require('core.keymaps')
+
+
 -- Configura lazy.nvim para gestionar plugins
 require('lazy').setup('plugins')
+
+
+
+
+
 
 -- Otras configuraciones globales pueden ir aquí
 -- Por ejemplo, configuración de opciones globales, mapeos de teclas, etc.
