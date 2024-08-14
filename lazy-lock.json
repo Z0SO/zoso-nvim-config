@@ -1,0 +1,6 @@
+{
+  "alpha-nvim": { "branch": "main", "commit": "355fbb81a59637a8963cf5847074f8c44dbef11f" },
+  "lualine.nvim": { "branch": "master", "commit": "b431d228b7bbcdaea818bdc3e25b8cdbe861f056" },
+  "vim-gotham": { "branch": "main", "commit": "747ee82960b4a7ed75ac133bb84bfc02b5ac9e27" },
+  "vim-polyglot": { "branch": "master", "commit": "bc8a81d3592dab86334f27d1d43c080ebf680d42" }
+}
