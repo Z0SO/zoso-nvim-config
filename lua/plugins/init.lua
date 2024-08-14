@@ -265,6 +265,22 @@ return {
 
 
 
+    -- nvim-autopairs
+    {
+        'windwp/nvim-autopairs',
+        config = function()
+            require('nvim-autopairs').setup({
+                disable_filetype = { "TelescopePrompt", "vim" },
+                enable_check_bracket_line = false,
+                enable_afterquote = true,
+            })
+        end
+    },
+
+
+
+
+
     -- nvim-cmp
     {
         'hrsh7th/nvim-cmp',
@@ -276,6 +292,7 @@ return {
             'L3MON4D3/LuaSnip',          -- Motor de snippets
             'saadparwaiz1/cmp_luasnip',  -- Fuente de completado para LuaSnip
             'onsails/lspkind-nvim',      -- Iconos para los ítems de la lista
+            'windwp/nvim-autopairs',     -- Autocompletado de pares de caracteres
         },
         config = function()
             local cmp = require('cmp')
@@ -324,9 +341,63 @@ return {
                     { name = 'cmdline' }
                 })
             })
+
+            -- Configuración para nvim-autopairs
+            local npairs = require('nvim-autopairs')
+            npairs.setup({
+                disable_filetype = { "TelescopePrompt", "vim" },
+                enable_check_bracket_line = false,
+                enable_afterquote = true,
+            })
+
+            -- Integración de nvim-autopairs con nvim-cmp
+            cmp.event:on('confirm_done', function()
+                npairs.completion.on_confirm_done()
+            end)
         end
     },
 
 
+
+
+
+
+    -- Telescope y sus dependencias
+    {
+        'nvim-telescope/telescope.nvim',
+        requires = { 'nvim-lua/plenary.nvim' },
+        config = function()
+            require('telescope').setup({
+                defaults = {
+                    file_ignore_patterns = { "node_modules", ".git/" },
+                    layout_strategy = "vertical",
+                    layout_config = {
+                        vertical = {
+                            width = 0.9,
+                            height = 0.8,
+                            preview_height = 0.5,
+                        },
+                    },
+                    mappings = {
+                        i = {
+                            ["<C-n>"] = require('telescope.actions').move_selection_next,
+                            ["<C-p>"] = require('telescope.actions').move_selection_previous,
+                        },
+                    },
+                },
+                pickers = {
+                    find_files = {
+                        hidden = true,
+                    },
+                },
+                extensions = {
+                    -- Aquí puedes configurar extensiones si es necesario
+                },
+            })
+
+            -- Cargar extensiones si se usan
+            -- require('telescope').load_extension('fzy_native') -- Ejemplo de carga de una extensión
+        end
+    },
 }
 
