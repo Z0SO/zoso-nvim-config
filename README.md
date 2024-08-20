@@ -1,24 +1,25 @@
 
-
-
-### Instala `lazy.nvim`
-
-Abre tu terminal y ejecuta:
-```bash
-git clone https://github.com/folke/lazy.nvim.git ~/.local/share/nvim/site/pack/packer/start/lazy.nvim
-```
-### Estructura del directorio
-
+## Estructura del directorio
 
 ```plaintext
 ~/.config/nvim/
 ├── init.lua
 └── lua/
     ├── plugins/
+    │   ├── themes.lua
+    │   ├── alpha.lua
     │   └── init.lua
     └── core/
+        ├── options.lua
         └── keymaps.lua
 
+```
+
+### Necesitas `lazy.nvim`
+
+Abre tu terminal y ejecuta:
+```bash
+git clone https://github.com/folke/lazy.nvim.git ~/.local/share/nvim/site/pack/packer/start/lazy.nvim
 ```
 
 ## Mis atajos de teclado
@@ -91,4 +92,23 @@ git clone https://github.com/folke/lazy.nvim.git ~/.local/share/nvim/site/pack/p
 - **Ir al final de la línea:** `$`
 - **Ir a la línea superior:** `k`
 - **Ir a la línea inferior:** `j`
+- **En modo Insercion ir a modo Normal:** `jk`
+
+#### Navegacion de a parrafos
+
+- **Ir al parrafo anterior:** `Alt + k`
+- **Ir al parrafo siguiente:** `Alt + j`
+
+#### Navegacion de a palabras
+
+- **Ir a la palabra anterior:** `Alt + h`
+- **Ir a la palabra siguiente:** `Alt + l`
+
+> Tambien funciona en modo visual
+
+#### Borrar palabras
+
+- **Borrar palabra anterior:** alt + del
+
+> Tambien funciona en modo normal
 

@@ -46,6 +46,8 @@ vim.api.nvim_set_keymap('n', '<leader>bp', ':bprevious<CR>', { noremap = true, s
 vim.api.nvim_set_keymap('n', '<leader>bd', ':bdelete<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>bn', ':enew<CR>', { noremap = true, silent = true })
 
+-- Atajo para ejecutar :vsp (ventana vertical dividida)
+vim.api.nvim_set_keymap('n', '<leader>tt', ':vsp<CR>', { noremap = true, silent = true })
 
 -- Cambiar entre modos en terminal
 vim.api.nvim_set_keymap('t', '<C-\\><C-n>', '<C-\\><C-n>', { noremap = true, silent = true })
@@ -60,7 +62,7 @@ vim.api.nvim_set_keymap('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true, silent =
 -- Mantener el cursor centrado al desplazarse
 vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-i>', 'zz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-i>', 'zz', { noremap = true, silent = true })
 
 -- Accesos directos a configuración de Neovim
 vim.api.nvim_set_keymap('n', '<leader>vv', ':e $MYVIMRC<CR>', { noremap = true, silent = true })
@@ -114,8 +116,33 @@ vim.api.nvim_set_keymap('i', '<C-S-V>', '<C-r>+', { noremap = true, silent = tru
 ------------------------------------------------------------------------------------------
 -- Mapeos para moverse entre párrafos
 ------------------------------------------------------------------------------------------
-vim.api.nvim_set_keymap('n', '<C-k>', '{', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-j>', '}', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-k>', '{', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-j>', '}', { noremap = true, silent = true })
+
+-- Tambien para modo visual
+vim.api.nvim_set_keymap('v', '<A-k>', '{', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<A-j>', '}', { noremap = true, silent = true })
+
+
+
+------------------------------------------------------------------------------------------
+--- Navegacion entre palabras
+------------------------------------------------------------------------------------------
+
+-- Mapeo para moverse hacia atras y adelante entre palabras
+vim.api.nvim_set_keymap('n', '<A-h>', 'b', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-l>', 'w', { noremap = true, silent = true })
+
+-- Mapeo para moverse hacia atras y adelante entre palabras en modo visual
+vim.api.nvim_set_keymap('v', '<A-h>', 'b', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<A-l>', 'w', { noremap = true, silent = true })
+
+-- Borrado de palabras en modo insercion con alt + retroceso
+vim.api.nvim_set_keymap('i', '<A-BS>', '<C-w>', { noremap = true, silent = true })
+
+-- Borrado de palabras en modo normal con alt + retroceso
+vim.api.nvim_set_keymap('n', '<A-BS>', 'db', { noremap = true, silent = true })
+
 
 
 ------------------------------------------------------------------------------------------
