@@ -79,7 +79,6 @@ vim.api.nvim_set_keymap('n', ',', '$', { noremap = true, silent = true })
 -- Volver al modo normal desde modo insercion presionando las teclas jk
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true })
 
-
 ------------------------------------------------------------------------------------------
 -- Tabulacion
 ------------------------------------------------------------------------------------------

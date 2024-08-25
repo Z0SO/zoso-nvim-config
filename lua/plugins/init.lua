@@ -17,12 +17,41 @@ return {
         end
     },
 
+    -- Para visualizacion de tablas
+
+    {
+        "tpope/vim-dadbod",
+        requires = {
+            "kristijanhusak/vim-dadbod-ui",
+            "kristijanhusak/vim-dadbod-completion"
+        },
+
+        config = function()
+            -- Configuración opcional de vim-dadbod-ui
+            vim.g.dbs = {
+                sqlite = 'sqlite://Documents/repos/G10-ImplementacionCU/db.sqlite3',
+            }
+            -- Mapeos opcionales
+            vim.api.nvim_set_keymap('n', '<leader>db', ':DBUI<CR>', { noremap = true, silent = true })
+        end
+    },
+
     {
         'tpope/vim-abolish',
         config = function()
             -- Opcional: Configuración específica para vim-abolish
         end
     },
+
+
+    -- para sintaxis de svelte y javascript
+
+    -- Vim Javascript Syntax
+    {
+        'pangloss/vim-javascript',
+        ft = { 'javascript', 'javascriptreact', 'svelte' }, -- Opcionalmente añade 'svelte' si trabajas con Svelte
+    },
+
 
     -- -- vim-sleuth
     -- {
@@ -36,7 +65,7 @@ return {
     {
         'Yggdroot/indentLine',
         config = function()
-            vim.g.indentLine_char = " "
+            vim.g.indentLine_char = ' '
             vim.g.indentLine_enabled = 1
             vim.g.indentLine_setColors = 0
             vim.g.indentLine_color_term = 239
@@ -102,6 +131,12 @@ return {
         'tpope/vim-commentary',
         config = function()
             -- Opcional: Configuración específica para vim-commentary
+            -- para que tenga en cuenta comentarios en archivos .svelte
+            vim.cmd [[
+              autocmd FileType svelte setlocal commentstring=/*\ %s\ */
+              autocmd FileType svelte setlocal commentstring=//\ %s
+              autocmd FileType svelte setlocal commentstring=<!--\ %s\ -->
+            ]]
         end
     },
 
@@ -185,19 +220,16 @@ return {
         config = function()
             require('nvim-treesitter.configs').setup({
                 -- Asegúrate de que los parsers necesarios estén instalados
-                ensure_installed = { "c", "cpp", "python", "lua", "javascript", "html", "css", "go", "rust" },
-                
+                ensure_installed = { "c", "cpp", "javascript", "html", "css", "go", "rust" },
                 -- Habilita el resaltado de sintaxis basado en Tree-sitter
                 highlight = {
                     enable = false,  -- Habilita el resaltado de sintaxis
                     additional_vim_regex_highlighting = false,  -- Desactiva el resaltado de sintaxis basado en regex
                 },
-                
                 -- Configuración para la indentación automática
                 indent = {
                     enable = true,  -- Habilita la indentación automática
                 },
-                
                 -- Configuración opcional para el refactor y otras características
                 refactor = {
                     highlight_definitions = { enable = true },
@@ -247,7 +279,7 @@ return {
 
             -- Configuración de servidores LSP
             lspconfig.tsserver.setup {}  -- Ejemplo para TypeScript/JavaScript
-            lspconfig.pyright.setup {}   -- Ejemplo para Python
+            -- lspconfig.pyright.setup {}   -- Ejemplo para Python
             lspconfig.lua_ls.setup {}  -- Ejemplo para Lua
 
             -- Puedes agregar más servidores LSP aquí
