@@ -4,7 +4,7 @@
 
 -- Neovide: factor de escalado de la fuente
 
-vim.g.neovide_scale_factor = 0.8  -- Cambia este valor al tamaño que prefieras
+vim.g.neovide_scale_factor = 0.7  -- Cambia este valor al tamaño que prefieras
 
 
 -- Opcional: Configura opciones básicas
