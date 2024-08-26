@@ -1,11 +1,12 @@
 -- ~/.config/nvim/lua/plugins/init.lua
 
+
 -- para importar alpha.lua desde .
 
 
 require('plugins.alpha')
 require('plugins.themes')
-
+require('plugins.lsp.init')
 
 return {
 
@@ -42,7 +43,6 @@ return {
             -- Opcional: Configuración específica para vim-abolish
         end
     },
-
 
     -- para sintaxis de svelte y javascript
 
@@ -271,22 +271,6 @@ return {
     },
 
 
-    -- nvim-lspconfig
-    {
-        'neovim/nvim-lspconfig',
-        config = function()
-            local lspconfig = require('lspconfig')
-
-            -- Configuración de servidores LSP
-            lspconfig.tsserver.setup {}  -- Ejemplo para TypeScript/JavaScript
-            -- lspconfig.pyright.setup {}   -- Ejemplo para Python
-            lspconfig.lua_ls.setup {}  -- Ejemplo para Lua
-
-            -- Puedes agregar más servidores LSP aquí
-        end
-    },
-
-
 
     -- nvim-autopairs
     {
@@ -299,89 +283,6 @@ return {
             })
         end
     },
-
-
-
-
-
-    -- nvim-cmp
-    {
-        'hrsh7th/nvim-cmp',
-        requires = {
-            'hrsh7th/cmp-nvim-lsp',      -- Fuente de completado para LSP
-            'hrsh7th/cmp-buffer',        -- Fuente de completado para el buffer
-            'hrsh7th/cmp-path',          -- Fuente de completado para el sistema de archivos
-            'hrsh7th/cmp-cmdline',       -- Fuente de completado para la línea de comandos
-            'L3MON4D3/LuaSnip',          -- Motor de snippets
-            'saadparwaiz1/cmp_luasnip',  -- Fuente de completado para LuaSnip
-            'onsails/lspkind-nvim',      -- Iconos para los ítems de la lista
-            'windwp/nvim-autopairs',     -- Autocompletado de pares de caracteres
-        },
-        config = function()
-            local cmp = require('cmp')
-            local lspkind = require('lspkind')
-
-            cmp.setup({
-                snippet = {
-                    expand = function(args)
-                        require('luasnip').lsp_expand(args.body)
-                    end,
-                },
-                mapping = cmp.mapping.preset.insert({
-                    ['<C-n>'] = cmp.mapping.select_next_item(),
-                    ['<C-p>'] = cmp.mapping.select_prev_item(),
-                    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-                    ['<C-e>'] = cmp.mapping.abort(),
-                }),
-                sources = cmp.config.sources({
-                    { name = 'nvim_lsp' },
-                    { name = 'luasnip' },
-                    { name = 'buffer' },
-                    { name = 'path' },
-                }),
-                formatting = {
-                    format = lspkind.cmp_format({
-                        with_text = true,
-                        maxwidth = 50,  -- Ajusta el ancho máximo de los ítems de la lista
-                    })
-                },
-                experimental = {
-                    ghost_text = true,  -- Muestra un texto fantasma (opcional)
-                },
-            })
-
-            -- Configuración para el autocompletado en la línea de comandos
-            cmp.setup.cmdline('/', {
-                sources = {
-                    { name = 'buffer' }
-                }
-            })
-
-            cmp.setup.cmdline(':', {
-                sources = cmp.config.sources({
-                    { name = 'path' }
-                }, {
-                    { name = 'cmdline' }
-                })
-            })
-
-            -- Configuración para nvim-autopairs
-            local npairs = require('nvim-autopairs')
-            npairs.setup({
-                disable_filetype = { "TelescopePrompt", "vim" },
-                enable_check_bracket_line = false,
-                enable_afterquote = true,
-            })
-
-            -- Integración de nvim-autopairs con nvim-cmp
-            cmp.event:on('confirm_done', function()
-                npairs.completion.on_confirm_done()
-            end)
-        end
-    },
-
-
-
 
 
 
@@ -431,7 +332,6 @@ return {
 	-- para utilizarlo -> selecciona la palabara y presiona S y el simbolo que lo quieres surroundear.
     },
 
-    -- vim-closetag
     {
         'alvan/vim-closetag',
         event = 'InsertEnter',
@@ -450,7 +350,107 @@ return {
             vim.g.closetag_close_shortcut = '<leader>>'
         end,
     },
+    
+    -- Tailwind CSS Colorizer for nvim-cmp
+    {
+        "roobert/tailwindcss-colorizer-cmp.nvim",
+        config = function()
+            require("tailwindcss-colorizer-cmp").setup({
+                color_square_width = 2,  -- Ajusta el ancho del cuadrado de color en el autocompletado
+            })
+        end
+    },
+
+    -- Configuración para nvim-cmp
+    {
+        'hrsh7th/nvim-cmp',
+        requires = {
+            'hrsh7th/cmp-buffer',        -- Fuente de completado para el buffer
+            'hrsh7th/cmp-path',          -- Fuente de completado para el sistema de archivos
+            'hrsh7th/cmp-cmdline',       -- Fuente de completado para la línea de comandos
+            'L3MON4D3/LuaSnip',          -- Motor de snippets
+            'saadparwaiz1/cmp_luasnip',  -- Fuente de completado para LuaSnip
+            'onsails/lspkind-nvim',      -- Iconos para los ítems de la lista
+            'windwp/nvim-autopairs',     -- Autocompletado de pares de caracteres
+        },
+        config = function()
+            local cmp = require('cmp')
+            local lspkind = require('lspkind')
+            local npairs = require('nvim-autopairs')
+            local luasnip = require('luasnip')
+
+            -- Configuración de nvim-cmp
+            cmp.setup({
+                snippet = {
+                    expand = function(args)
+                        luasnip.lsp_expand(args.body)  -- Usa LuaSnip para snippets
+                    end,
+                },
+          
+                mapping = cmp.mapping.preset.insert({
+                    ['<C-n>'] = cmp.mapping.select_next_item(),  -- Selecciona el siguiente ítem
+                    ['<C-p>'] = cmp.mapping.select_prev_item(),  -- Selecciona el ítem anterior
+                    ['<C-y>'] = cmp.mapping.confirm({ select = true }),  -- Confirma el ítem seleccionado
+                    ['<C-e>'] = cmp.mapping.abort(),  -- Cancela la completación
+                    ['<C-Space>'] = cmp.mapping.complete(),
+                }),
+                sources = cmp.config.sources({
+                    { name = 'luasnip' },  -- Fuente de completado para snippets
+                    { name = 'buffer' },   -- Fuente de completado para el contenido del buffer
+                    { name = 'path' },     -- Fuente de completado para rutas de archivos
+                }),
+                formatting = {
+                    format = lspkind.cmp_format({  -- Opcional: agrega íconos para los ítems
+                        with_text = true,
+                        maxwidth = 50,
+                    }),
+                },
+                experimental = {
+                    ghost_text = true,  -- Muestra un texto fantasma (opcional)
+                },
+            })
+
+            -- Configuración para el autocompletado en la línea de comandos
+            cmp.setup.cmdline('/', {
+                sources = {
+                    { name = 'buffer' }
+                }
+            })
+
+            cmp.setup.cmdline(':', {
+                sources = cmp.config.sources({
+                    { name = 'path' }
+                }, {
+                    { name = 'cmdline' }
+                })
+            })
+
+            -- Configuración para nvim-autopairs
+            npairs.setup({
+                disable_filetype = { "TelescopePrompt", "vim" },
+                enable_check_bracket_line = false,
+                enable_afterquote = true,
+            })
+
+            -- Integración de nvim-autopairs con nvim-cmp
+            cmp.event:on('confirm_done', function()
+                npairs.completion.on_confirm_done()
+            end)
+        end
+    },
+    
+    'hrsh7th/nvim-cmp',
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-cmdline',
+    'L3MON4D3/LuaSnip',
+    'saadparwaiz1/cmp_luasnip',
+    'onsails/lspkind-nvim',
+    'windwp/nvim-autopairs',
+
+    -- TailwindCSS colorizer (opcional)
+    'raiha/tailwindcss-colorizer-cmp.nvim',
 
 
 }
-

@@ -1,4 +1,5 @@
 
+
 -- ~/.config/nvim/lua/core/keymaps.lua
 
 ------------------------------------------------------------------------------------------
@@ -150,6 +151,9 @@ vim.api.nvim_set_keymap('n', '<A-BS>', 'db', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>ew', ':NvimTreeFocus<CR>', { noremap = true, silent = true })
 
+-- para cerrar el árbol de archivos
+vim.api.nvim_set_keymap('n', '<leader>ec', ':NvimTreeClose<CR>', { noremap = true, silent = true })
+
 ------------------------------------------------------------------------------------------
 -- Commentary: Comentar y descomentar código
 ------------------------------------------------------------------------------------------
@@ -203,7 +207,4 @@ vim.api.nvim_set_keymap('n', '<Leader><Leader>s', '<Plug>(easymotion-sn)', { nor
 
 vim.cmd [[highlight EasyMotionTarget cterm=bold ctermbg=red guibg=red]]
 vim.cmd [[highlight EasyMotionShade ctermbg=darkgray guibg=darkgray]]
-
-
-
 
