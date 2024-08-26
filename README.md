@@ -6,6 +6,9 @@
 ├── init.lua
 └── lua/
     ├── plugins/
+    │   ├── lsp/
+    │   │   ├── config.lua
+    │   │   └── init.lua
     │   ├── themes.lua
     │   ├── alpha.lua
     │   └── init.lua
