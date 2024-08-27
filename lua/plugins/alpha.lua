@@ -119,9 +119,13 @@ return {
 			dashboard.button("SPC fs", "  > Find Word", "<cmd>Telescope live_grep<CR>"),
 			dashboard.button("SPC wr", "󰁯  > Restore Session For Current Directory", "<cmd>SessionRestore<CR>"),
 			dashboard.button("SPC c", "Go to nvim dotconfig", "<cmd>e ~/.config/nvim/<CR>"),
-            dashboard.button("SPC uml", "[UML-PRACTICE] > Ir a UMLPractice", "<cmd>e ~/Documents/repos/UML-Practice<CR>"),
-			dashboard.button("l", "Set neovide's transparency to 0.5", "<cmd>let g:neovide_transparency=0.92<CR>"),
-			dashboard.button("SPC dsi", "[DSI-UC] > Ir a DSI-CU", "<cmd>e ~/Documents/repos/G10-ImplementacionCU<CR>"),
+            -- dashboard.button("SPC uml", "[UML-PRACTICE] > Ir a UMLPractice", "<cmd>e ~/Documents/repos/UML-Practice<CR>"),
+			dashboard.button("l", "Set neovide's transparency to 0.6", "<cmd>let g:neovide_transparency=0.92<CR>"),
+			dashboard.button("SPC dsi", "[DSI-UC] > Ir a DSI-CU", "<cmd>e ~/Documents/proyectos/G10-ImplementacionCU<CR>"),
+            
+            -- para ir a G10-ImplementacionCU/client
+            dashboard.button("SPC dsc", "[DSI-UC] > Ir a DSI/client", "<cmd>e ~/Documents/proyectos/G10-ImplementacionCU/client<CR>"),
+
             dashboard.button("q", " > Quit NVIM", "<cmd>qa<CR>"),
 		}
 

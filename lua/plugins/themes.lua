@@ -16,7 +16,7 @@ return {
 		'srcery-colors/srcery-vim',
 		as = 'srcery',
 		config = function()
-			-- vim.cmd('colorscheme srcery')
+			vim.cmd('colorscheme srcery')
 		end
 	},
 
