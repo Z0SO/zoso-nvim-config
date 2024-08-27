@@ -450,7 +450,7 @@ return {
     'windwp/nvim-autopairs',
 
     -- TailwindCSS colorizer (opcional)
-    'raiha/tailwindcss-colorizer-cmp.nvim',
+    -- 'raiha/tailwindcss-colorizer-cmp.nvim',
 
 
 }
