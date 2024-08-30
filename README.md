@@ -41,10 +41,6 @@ git clone git@github.com:Z0SO/zoso-nvim-config.git ~/.config/nvim
 Abre tu terminal y ejecuta:
 ```bash
 git clone https://github.com/folke/lazy.nvim.git ~/.local/share/nvim/site/pack/packer/start/lazy.nvim
-
-
-
-
 ```
 
 ## Mis atajos de teclado
