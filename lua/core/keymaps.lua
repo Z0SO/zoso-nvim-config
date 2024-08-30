@@ -107,7 +107,6 @@ vim.api.nvim_set_keymap('n', '<C-->', ':lua vim.g.neovide_scale_factor = vim.g.n
 vim.api.nvim_set_keymap('v', '<leader>y', '"+y', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>p', '"+p', { noremap = true, silent = true })
 
-
 -- Pegar texto en Neovide
 vim.api.nvim_set_keymap('n', '<C-S-P>', '"+p', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<C-S-V>', '<C-r>+', { noremap = true, silent = true })

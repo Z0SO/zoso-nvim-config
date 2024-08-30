@@ -1,12 +1,10 @@
--- ~/.config/nvim/lua/plugins/init.lua
-
-
 -- para importar alpha.lua desde .
 
 
 require('plugins.alpha')
 require('plugins.themes')
 require('plugins.lsp.init')
+require('plugins.tailwind-plugins')
 
 return {
 
@@ -451,6 +449,13 @@ return {
 
     -- TailwindCSS colorizer (opcional)
     -- 'raiha/tailwindcss-colorizer-cmp.nvim',
-
+    
+    -- instalaremos un color para que resalten las clases de tailwind en el codigo
+    {
+        'norcalli/nvim-colorizer.lua',
+        config = function()
+            require('colorizer').setup()
+        end
+    },
 
 }

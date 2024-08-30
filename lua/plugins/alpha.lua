@@ -120,7 +120,7 @@ return {
 			dashboard.button("SPC wr", "󰁯  > Restore Session For Current Directory", "<cmd>SessionRestore<CR>"),
 			dashboard.button("SPC c", "Go to nvim dotconfig", "<cmd>e ~/.config/nvim/<CR>"),
             dashboard.button("SPC uml", "[UML-PRACTICE] > Ir a UMLPractice", "<cmd>e ~/Documents/repos/UML-Practice<CR>"),
-			dashboard.button("l", "Set neovide's transparency to 0.5", "<cmd>let g:neovide_transparency=0.92<CR>"),
+			dashboard.button("l", "Set neovide's transparency to 0.5", "<cmd>let g:neovide_transparency=0.5<CR>"),
 			dashboard.button("SPC dsi", "[DSI-UC] > Ir a DSI-CU", "<cmd>e ~/Documents/repos/G10-ImplementacionCU<CR>"),
             dashboard.button("q", " > Quit NVIM", "<cmd>qa<CR>"),
 		}
