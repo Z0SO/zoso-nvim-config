@@ -8,6 +8,7 @@
     ├── plugins/
     │   ├── themes.lua
     │   ├── alpha.lua
+    │   ├── tailwind-plugins.lua
     │   └── init.lua
     └── core/
         ├── options.lua
@@ -15,12 +16,35 @@
 
 ```
 
+
+## Instalación
+
+Ejecuta el siguiente comando en tu terminal:
+
+
+- Por https
+
+```bash
+git clone https://github.com/Z0SO/zoso-nvim-config.git ~/.config/nvim
+```
+
+- Por ssh
+
+```bash
+git clone git@github.com:Z0SO/zoso-nvim-config.git ~/.config/nvim
+```
+  
+
 ### Necesitas `lazy.nvim`
 
 
 Abre tu terminal y ejecuta:
 ```bash
 git clone https://github.com/folke/lazy.nvim.git ~/.local/share/nvim/site/pack/packer/start/lazy.nvim
+
+
+
+
 ```
 
 ## Mis atajos de teclado
