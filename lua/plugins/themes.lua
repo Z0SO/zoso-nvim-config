@@ -38,6 +38,19 @@ return {
 		end
     },
 
+	-- Tema minimalist
+    {
+        "dikiaap/minimalist",
+        config = function()
+            -- Configuración del tema
+            vim.opt.termguicolors = true
+            -- vim.cmd("colorscheme minimalist")
+			vim.g.airline_theme = 'minimalist'
+            vim.g.airline_powerline_fonts = 1
+            vim.g['airline#extensions#tabline#enabled'] = 1
+        end,
+    },
+
 	-- Tema Oxocarbon
 	{
 		"nyoom-engineering/oxocarbon.nvim",
