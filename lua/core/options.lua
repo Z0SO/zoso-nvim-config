@@ -16,8 +16,18 @@ vim.o.expandtab = true
 
 vim.opt.termguicolors = true
 
+-- Configuración de Emmet
+vim.g.user_emmet_leader_key = '<C-e>' -- Usa Ctrl+e como atajo para expandir abreviaciones
 
 --------------------------------------------------
 --- SLEUTH
 --------------------------------------------------
 -- vim.g.sleuth_autoindent = 1
+
+
+
+-- Configuración de la barra lateral
+-- barra lateral a la derecha
+vim.g.nvim_tree_side = 'right'
+
+

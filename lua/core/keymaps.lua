@@ -12,20 +12,6 @@ vim.g.maplocalleader = " "
 ------------------------------------------------------------------------------------------
 ---Configuración General
 ------------------------------------------------------------------------------------------
-
--- Navegación entre ventanas
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
-
--- Navegación entre ventanas con Ctrl + Mayúsculas
-vim.api.nvim_set_keymap('n', '<C-M-h>', '<C-w>h', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-M-j>', '<C-w>j', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-M-k>', '<C-w>k', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-M-l>', '<C-w>l', { noremap = true, silent = true })
-
-
 -- Guardado y cierre rápido
 vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>q', ':q<CR>', { noremap = true, silent = true })
@@ -47,8 +33,43 @@ vim.api.nvim_set_keymap('n', '<leader>bp', ':bprevious<CR>', { noremap = true, s
 vim.api.nvim_set_keymap('n', '<leader>bd', ':bdelete<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>bn', ':enew<CR>', { noremap = true, silent = true })
 
--- Atajo para ejecutar :vsp (ventana vertical dividida)
-vim.api.nvim_set_keymap('n', '<leader>tt', ':vsp<CR>', { noremap = true, silent = true })
+------------------------------------------------------------------------------------------
+--- Multiples Ventanas
+------------------------------------------------------------------------------------------
+
+
+-- Navegación entre ventanas
+vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
+
+-- Navegación entre ventanas con Ctrl + Mayúsculas
+vim.api.nvim_set_keymap('n', '<C-M-h>', '<C-w>h', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-M-j>', '<C-w>j', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-M-k>', '<C-w>k', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-M-l>', '<C-w>l', { noremap = true, silent = true })
+
+
+-- Atajos para dividir la ventana
+vim.api.nvim_set_keymap('n', '<leader>tt', ':vsp<CR>', { noremap = true, silent = true }) -- Ventana vertical
+vim.api.nvim_set_keymap('n', '<leader>tg', ':sp<CR>', { noremap = true, silent = true }) -- Ventana horizontal
+
+-- Atajos para redimensionar ventanas
+vim.api.nvim_set_keymap('n', '<leader>=', ':resize +5<CR>', { noremap = true, silent = true }) -- Aumentar altura
+vim.api.nvim_set_keymap('n', '<leader>-', ':resize -5<CR>', { noremap = true, silent = true }) -- Disminuir altura
+vim.api.nvim_set_keymap('n', '<leader>>', ':vertical resize +5<CR>', { noremap = true, silent = true }) -- Aumentar ancho
+vim.api.nvim_set_keymap('n', '<leader><', ':vertical resize -5<CR>', { noremap = true, silent = true }) -- Disminuir ancho
+
+-- Atajo para cerrar todas las ventanas
+vim.api.nvim_set_keymap('n', '<leader>qa', ':qa!<CR>', { noremap = true, silent = true }) -- Cerrar todas las ventanas
+
+
+
+------------------------------------------------------------------------------------------
+
+
+
 
 -- Cambiar entre modos en terminal
 vim.api.nvim_set_keymap('t', '<C-\\><C-n>', '<C-\\><C-n>', { noremap = true, silent = true })
@@ -69,6 +90,8 @@ vim.api.nvim_set_keymap('n', '<A-i>', 'zz', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>vv', ':e $MYVIMRC<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>pp', ':e ~/.config/nvim/lua/plugins/init.lua<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>kk', ':e ~/.config/nvim/lua/core/keymaps.lua<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>oo', ':e ~/.config/nvim/lua/core/options.lua<CR>', { noremap = true, silent = true })
+
 
 -- Recargar configuración sin salir de Neovim
 vim.api.nvim_set_keymap('n', '<leader>sv', ':source $MYVIMRC<CR>', { noremap = true, silent = true })
@@ -153,6 +176,7 @@ vim.api.nvim_set_keymap('n', '<leader>ew', ':NvimTreeFocus<CR>', { noremap = tru
 -- para cerrar el árbol de archivos
 vim.api.nvim_set_keymap('n', '<leader>ec', ':NvimTreeClose<CR>', { noremap = true, silent = true })
 
+
 ------------------------------------------------------------------------------------------
 -- Commentary: Comentar y descomentar código
 ------------------------------------------------------------------------------------------
@@ -206,4 +230,20 @@ vim.api.nvim_set_keymap('n', '<Leader><Leader>s', '<Plug>(easymotion-sn)', { nor
 
 vim.cmd [[highlight EasyMotionTarget cterm=bold ctermbg=red guibg=red]]
 vim.cmd [[highlight EasyMotionShade ctermbg=darkgray guibg=darkgray]]
+
+
+-- transparencia para neovide
+-- debe ser algo parecido a esto dashboard.button("l", "Set neovide's transparency to 0.92", "<cmd>let g:neovide_transparency=0.92<CR>"),
+
+vim.api.nvim_set_keymap('n', '<leader>l', ':let g:neovide_transparency=0.90<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>o', ':let g:neovide_transparency=1<CR>', { noremap = true, silent = true })
+
+
+------------------------------------------------------------------------------------------
+-- Atajos de teclado para navegar entre pestañas
+vim.api.nvim_set_keymap('n', '<Tab>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
+
+------------------------------------------------------------------------------------------
+
 

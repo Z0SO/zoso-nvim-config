@@ -1,12 +1,35 @@
 -- para importar alpha.lua desde .
-
-
 require('plugins.alpha')
 require('plugins.themes')
 require('plugins.lsp.init')
 require('plugins.tailwind-plugins')
 
 return {
+
+    -- Plugin para manejar pestañas
+    {
+        'akinsho/bufferline.nvim',
+        version = "*",
+        dependencies = 'nvim-tree/nvim-web-devicons', -- Asegúrate de tener nvim-web-devicons
+        config = function()
+            require("bufferline").setup{
+                options = {
+                    numbers = "none", -- 'ordinal' | 'buffer_id' | 'both' | function
+                    close_command = "bdelete! %d", -- Comando para cerrar pestañas
+                    right_mouse_command = "bdelete! %d", -- Cierre con click derecho
+                    left_mouse_command = "buffer %d", -- Mover pestaña con click izquierdo
+                    middle_mouse_command = nil, -- No usar middle click
+                    indicator = {
+                        icon = '▎', -- Símbolo de indicador
+                    },
+                    show_buffer_icons = true, -- Mostrar íconos de buffers
+                    show_close_icon = false, -- No mostrar ícono de cerrar
+                    separator_style = "thin", -- 'slant' | 'thick' | 'thin'
+                }
+            }
+        end
+    },
+
 
     -- vim-expand-region
     {
@@ -15,6 +38,7 @@ return {
             -- Opcional: Configuración específica para vim-expand-region
         end
     },
+ 
 
     -- Para visualizacion de tablas
 
@@ -41,6 +65,143 @@ return {
             -- Opcional: Configuración específica para vim-abolish
         end
     },
+
+
+      --   -- Plugin para íconos de material design
+      --   {
+      --     'DaikyXendo/nvim-material-icon',
+      --   },
+
+      -- -- Plugin para íconos de material design
+      -- {
+      --   'DaikyXendo/nvim-material-icon',
+      -- },
+
+      -- Plugin para íconos web-devicons
+      {
+        'nvim-tree/nvim-web-devicons',
+        config = function()
+          -- Configuración de nvim-web-devicons
+          require('nvim-web-devicons').setup({
+            override = {
+              -- Personaliza íconos para carpetas específicas
+              src = {
+                icon = "",
+                color = "#ffbc00",
+                cterm_color = "220",
+                name = "source"
+              },
+              build = {
+                icon = "",
+                color = "#f28b50",
+                cterm_color = "208",
+                name = "build"
+              },
+              assets = {
+                icon = "",
+                color = "#6d8086",
+                cterm_color = "59",
+                name = "assets"
+              },
+              core = {
+                icon = "",
+                color = "#c3e88d",
+                cterm_color = "121",
+                name = "core"
+              },
+              docs = {
+                icon = "",
+                color = "#ffcb6b",
+                cterm_color = "220",
+                name = "docs"
+              },
+              -- Añade más personalizaciones según tus necesidades
+            },
+            color_icons = true,
+            default = true,
+          })
+
+          -- Establece el ícono predeterminado si es necesario
+          require('nvim-web-devicons').set_default_icon('', '#6d8086')
+        end
+      },
+
+      -- Plugin para nvim-tree
+      {
+        'nvim-tree/nvim-tree.lua',
+        dependencies = {
+          'DaikyXendo/nvim-material-icon', 
+          'nvim-tree/nvim-web-devicons'
+        },
+        config = function()
+          -- Configuración de nvim-tree
+          require('nvim-tree').setup({
+            sync_root_with_cwd = true, -- Sincroniza con el directorio de trabajo actual
+            respect_buf_cwd = true,    -- Respeta el directorio del buffer activo
+
+            update_focused_file = {
+              enable = true,       -- Habilita la actualización del archivo actual
+              update_cwd = true,   -- Cambia el directorio de trabajo según el archivo activo
+              ignore_list = {},    -- Lista de archivos a ignorar (vacía por defecto)
+            },
+
+            renderer = {
+              icons = {
+                show = {
+                  file = true,
+                  folder = true,
+                  folder_arrow = true,
+                },
+              },
+            },
+          })
+        end,
+      },
+
+
+  -- html css snippets
+  
+  -- Emmet para HTML y CSS
+  { "mattn/emmet-vim" },
+
+  -- Autocompletado
+  { "hrsh7th/nvim-cmp" },
+  { "hrsh7th/cmp-nvim-lsp" },
+  { "hrsh7th/cmp-buffer" },
+  { "hrsh7th/cmp-path" },
+  { "hrsh7th/cmp-cmdline" },
+  { "saadparwaiz1/cmp_luasnip" },
+
+  -- Snippets
+  { "L3MON4D3/LuaSnip" },
+  { "rafamadriz/friendly-snippets" },
+
+
+
+
+
+-----
+
+
+
+
+
+
+
+  -- Plugin para icons de mini
+  {
+    'echasnovski/mini.icons',
+    config = function()
+      -- Configuración opcional para mini.icons
+    end
+  },
+
+
+
+
+
+
+
 
     -- para sintaxis de svelte y javascript
 
@@ -71,6 +232,7 @@ return {
         end
     },
 
+
     -- Vim-Signify
     {
         'mhinz/vim-signify',
@@ -99,23 +261,23 @@ return {
     },
 
 
-
-    -- GitHub Copilot
-    {
-        'github/copilot.vim',
+      {
+        "github/copilot.vim",
         config = function()
-            -- Opcional: Configuración adicional para GitHub Copilot
-            vim.g.copilot_filetypes = {
-                markdown = true,
-                -- Puedes añadir más tipos de archivos si es necesario
-            }
-        end
-    },
+          vim.g.copilot_filetypes = {
+            markdown = true,
+            -- Añade otros tipos de archivo que desees
+          }
+          -- Mapeos en modo inserción
+          vim.api.nvim_set_keymap("i", "<C-Space>", "<Tab>", { expr = true, silent = true })
+          
+          -- Mapeos en modo normal
+          vim.api.nvim_set_keymap("i", "<C-S>", "<Plug>(copilot-show)", { noremap = false, silent = true })
+          vim.api.nvim_set_keymap("i", "<C-N>", "<Plug>(copilot-next)", { noremap = false, silent = true })
+          vim.api.nvim_set_keymap("i", "<C-P>", "<Plug>(copilot-prev)", { noremap = false, silent = true })
+        end,
+      },
 
-    -- nvim-web-devicons
-    {
-        'nvim-tree/nvim-web-devicons',
-    },
 
     {
         'onsails/lspkind-nvim',
@@ -138,47 +300,6 @@ return {
         end
     },
 
-    -- nvim-tree.lua
-    {
-        'nvim-tree/nvim-tree.lua',
-        requires = { 'nvim-tree/nvim-web-devicons' }, -- Iconos para nvim-tree
-        config = function()
-            require('nvim-tree').setup({
-                update_focused_file = {
-                    enable = true,
-                    update_cwd = true,
-                },
-                view = {
-                    width = 30,
-                    side = 'left',
-                    -- Auto-resize y auto-close han sido eliminados
-                },
-                filters = {
-                    dotfiles = false,
-                },
-                git = {
-                    enable = true,
-                    ignore = false,
-                },
-                renderer = {
-                    icons = {
-                        show = {
-                            git = true,
-                            folder = true,
-                            file = true,
-                        },
-                    },
-                    highlight_git = true,
-                    highlight_opened_files = 'name',
-                },
-                actions = {
-                    open_file = {
-                        -- quit_on_open = true, -- Cierra el árbol al abrir un archivo
-                    },
-                },
-            })
-        end
-    },
 
     -- Plugin Polyglot
     {
