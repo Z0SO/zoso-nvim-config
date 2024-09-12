@@ -26,6 +26,7 @@
   "onedark.vim": { "branch": "main", "commit": "390b893d361c356ac1b00778d849815f2aa44ae4" },
   "oxocarbon.nvim": { "branch": "main", "commit": "004777819ba294423b638a35a75c9f0c7be758ed" },
   "plenary.nvim": { "branch": "master", "commit": "ec289423a1693aeae6cd0d503bac2856af74edaa" },
+  "presence.nvim": { "branch": "main", "commit": "87c857a56b7703f976d3a5ef15967d80508df6e6" },
   "srcery-vim": { "branch": "master", "commit": "c7398b0b32009406cf3918a655c364c44d7ab99b" },
   "tailwindcss-colorizer-cmp.nvim": { "branch": "main", "commit": "3d3cd95e4a4135c250faf83dd5ed61b8e5502b86" },
   "tailwindcss-colors.nvim": { "branch": "main", "commit": "ccb5be2f84673c1a0ef90a0c0a76733e85e5265b" },

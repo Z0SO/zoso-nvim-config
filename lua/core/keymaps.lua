@@ -61,9 +61,6 @@ vim.api.nvim_set_keymap('n', '<leader>-', ':resize -5<CR>', { noremap = true, si
 vim.api.nvim_set_keymap('n', '<leader>>', ':vertical resize +5<CR>', { noremap = true, silent = true }) -- Aumentar ancho
 vim.api.nvim_set_keymap('n', '<leader><', ':vertical resize -5<CR>', { noremap = true, silent = true }) -- Disminuir ancho
 
--- Atajo para cerrar todas las ventanas
-vim.api.nvim_set_keymap('n', '<leader>qa', ':qa!<CR>', { noremap = true, silent = true }) -- Cerrar todas las ventanas
-
 
 
 ------------------------------------------------------------------------------------------
@@ -244,6 +241,10 @@ vim.api.nvim_set_keymap('n', '<leader>o', ':let g:neovide_transparency=1<CR>', {
 vim.api.nvim_set_keymap('n', '<Tab>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
 
+-- para cerrar otras pestañas
+vim.api.nvim_set_keymap('n', '<leader>bo', ':BufferLineCloseOthers<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>bc', ':BufferLinePickClose<CR>', { noremap = true, silent = true })
+
+--ordenar pestañas por directorio
+vim.api.nvim_set_keymap('n', '<leader>bd', ':BufferLineSortByDirectory<CR>', { noremap = true, silent = true })
 ------------------------------------------------------------------------------------------
-
-

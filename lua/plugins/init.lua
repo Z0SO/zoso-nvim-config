@@ -31,7 +31,35 @@ return {
     },
 
 
-    -- vim-expand-region
+    -- Plugin para Discord Rich Presence
+    {
+      'andweeb/presence.nvim',
+      config = function()
+        require("presence").setup({
+          -- Opciones generales
+          auto_update = true,
+          neovim_image_text = "Neovim",
+          main_image = "neovide",
+          client_id = "793271441293967371", -- Reemplaza con tu ID de cliente si es necesario
+          log_level = nil,
+          debounce_timeout = 10,
+          enable_line_number = false,
+          blacklist = {},
+          buttons = true,
+          show_time = true,
+
+          -- Opciones de texto para Rich Presence
+          editing_text = "Editando %s",
+          file_explorer_text = "Navegando en %s",
+          git_commit_text = "Committeando cambios",
+          plugin_manager_text = "Gestionando plugins",
+          reading_text = "Leyendo %s",
+          workspace_text = "Trabajando en %s",
+          line_number_text = "Línea %s de %s",
+        })
+      end
+    },
+  -- vim-expand-region
     {
         'terryma/vim-expand-region',
         config = function()
@@ -138,7 +166,11 @@ return {
           require('nvim-tree').setup({
             sync_root_with_cwd = true, -- Sincroniza con el directorio de trabajo actual
             respect_buf_cwd = true,    -- Respeta el directorio del buffer activo
-
+            
+            view = {
+              side = 'right', -- Configura el árbol para que se abra a la derecha
+              width = 40,    -- Ancho de la ventana del árbol (ajusta según tu preferencia)
+            },
             update_focused_file = {
               enable = true,       -- Habilita la actualización del archivo actual
               update_cwd = true,   -- Cambia el directorio de trabajo según el archivo activo
