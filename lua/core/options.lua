@@ -31,3 +31,24 @@ vim.g.user_emmet_leader_key = '<C-e>' -- Usa Ctrl+e como atajo para expandir abr
 vim.g.nvim_tree_side = 'right'
 
 
+--------------------------------------------------
+--- usar el portapapeles del sistema
+--------------------------------------------------
+vim.opt.clipboard = 'unnamedplus'
+
+-- si utilizas wayland, es posible que necesites instalar wl-clipboard
+-- en caso de que uses x11 solo con xclip es suficiente
+vim.g.clipboard = {
+    name = 'wl-copy',
+    copy = {
+        ['+'] = 'wl-copy',
+        ['*'] = 'wl-copy',
+    },
+    paste = {
+        ['+'] = 'wl-paste',
+        ['*'] = 'wl-paste',
+    },
+    cache_enabled = 0
+}
+
+
