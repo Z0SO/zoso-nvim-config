@@ -20,6 +20,26 @@ return {
 		end
 	},
 
+	-- Tema gruvbox
+	{
+		'morhetz/gruvbox',
+		as = 'gruvbox',
+		config = function()
+			-- vim.cmd('colorscheme gruvbox')
+		end
+	},
+	
+	-- Tema github
+	{
+		"projekt0n/github-nvim-theme",
+		as = 'github',
+		config = function()
+			vim.cmd('colorscheme github_dark_default')
+        end
+
+
+	},
+
 	-- Tema One
 	{
 		'joshdick/onedark.vim',
