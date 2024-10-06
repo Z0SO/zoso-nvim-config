@@ -59,16 +59,17 @@ return {
 		dashboard.section.buttons.val = {
 			dashboard.button("e", "  > New File", "<cmd>ene<CR>"),
 			dashboard.button("SPC ee", "  > Toggle file explorer", "<cmd>NvimTreeToggle<CR>"),
-			dashboard.button("SPC ff", "󰱼 > Find File", "<cmd>Telescope find_files<CR>"),
+			dashboard.button("SPC ff", "󰱼  > Find File", "<cmd>Telescope find_files<CR>"),
 			dashboard.button("SPC fs", "  > Find Word", "<cmd>Telescope live_grep<CR>"),
 			dashboard.button("SPC wr", "󰁯  > Restore Session For Current Directory", "<cmd>SessionRestore<CR>"),
-			dashboard.button("SPC c", "Go to nvim dotconfig", "<cmd>e ~/.config/nvim/<CR>"),
-            dashboard.button("SPC uml", "[UML-PRACTICE] > Ir a UMLPractice", "<cmd>e ~/Documents/repos/UML-Practice<CR>"),
+			dashboard.button("SPC cc", "  > Go to nvim dotconfig", "<cmd>e ~/.config/nvim/<CR>"),
+            dashboard.button("SPC cf", "  > Go to .config/", "<cmd>e ~/.config<CR>"),
+            dashboard.button("SPC uml", "󱡀  > Ir a UMLPractice", "<cmd>e ~/Documents/repos/UML-Practice<CR>"),
 			dashboard.button("l", "Set neovide's transparency to 0.92", "<cmd>let g:neovide_transparency=0.92<CR>"),
 			dashboard.button("SPC dsi", "[DSI-UC] > Ir a DSI-CU", "<cmd>e ~/Documents/repos/G10-ImplementacionCU<CR>"),
             dashboard.button("q", " > Quit NVIM", "<cmd>qa<CR>"),
             -- para ir a el proyecto de gy-sis
-            dashboard.button("SPC gysis", "[GY-SIS] > Ir a GY-SIS", "<cmd>e ~/Documents/repos/gy-sis<CR>"),
+            dashboard.button("SPC gysis", "  > Ir a GY-SIS", "<cmd>e ~/Documents/repos/gy-sis<CR>"),
 		}
 
 		-- Send config to alpha
