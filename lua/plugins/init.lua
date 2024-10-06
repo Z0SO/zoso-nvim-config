@@ -6,6 +6,16 @@ require('plugins.tailwind-plugins')
 
 return {
 
+    {
+      'eandrju/cellular-automaton.nvim',
+      config = function()
+        -- Aquí puedes agregar una keymap para iniciar la animación
+        vim.keymap.set("n", "<leader>cmr", "<cmd>CellularAutomaton make_it_rain<CR>")
+      end
+    },
+
+
+
     -- Plugin para manejar pestañas
     {
         'akinsho/bufferline.nvim',
