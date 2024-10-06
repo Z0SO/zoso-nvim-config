@@ -371,7 +371,7 @@ return {
         config = function()
             require('nvim-treesitter.configs').setup({
                 -- Asegúrate de que los parsers necesarios estén instalados
-                ensure_installed = { "c", "cpp", "javascript", "html", "css", "go", "rust" },
+                ensure_installed = { "c", "cpp", "javascript", "html", "css", "go", "rust", "ini" },
                 -- Habilita el resaltado de sintaxis basado en Tree-sitter
                 highlight = {
                     enable = false,  -- Habilita el resaltado de sintaxis
