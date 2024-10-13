@@ -79,7 +79,7 @@ return {
         config = function()
             require('Comment').setup({
                 padding = true,  -- Añade espacios alrededor de los comentarios
-                mapping = '<leader>/',  -- Mapeo para comentarios
+                mapping = '<leader>c<leader>',  -- Mapeo para comentarios
             })
         end
     },
@@ -409,18 +409,18 @@ return {
     },
 
     --  vim-commentary
-    {
-        'tpope/vim-commentary',
-        config = function()
-            -- Opcional: Configuración específica para vim-commentary
-            -- para que tenga en cuenta comentarios en archivos .svelte
-            vim.cmd [[
-              autocmd FileType svelte setlocal commentstring=/*\ %s\ */
-              autocmd FileType svelte setlocal commentstring=//\ %s
-              autocmd FileType svelte setlocal commentstring=<!--\ %s\ -->
-            ]]
-        end
-    },
+    -- {
+    --     'tpope/vim-commentary',
+    --     config = function()
+    --         -- Opcional: Configuración específica para vim-commentary
+    --         -- para que tenga en cuenta comentarios en archivos .svelte
+    --         vim.cmd [[
+    --           autocmd FileType svelte setlocal commentstring=/*\ %s\ */
+    --           autocmd FileType svelte setlocal commentstring=//\ %s
+    --           autocmd FileType svelte setlocal commentstring=<!--\ %s\ -->
+    --         ]]
+    --     end
+    -- },
 
 
     -- -- Plugin Polyglot
