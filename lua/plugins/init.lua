@@ -6,6 +6,85 @@ require('plugins.tailwind-plugins')
 
 return {
 
+
+
+    -- nvim-treesitter
+    {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',  -- Actualiza los parsers cuando se instala
+        config = function()
+            -- Detección de archivos .conf para Hyprland, Waybar, Mako, y Kitty
+            vim.filetype.add {
+                extension = { rasi = 'rasi' },  -- Archivos .rasi como los de rofi
+                pattern = {
+                    ['.*/waybar/config'] = 'jsonc',
+                    ['.*/mako/config'] = 'dosini',
+                    ['.*/kitty/*.conf'] = 'bash',
+                    ['.*/hypr/.*%.conf'] = 'hyprlang', -- Resaltar archivos .conf de Hyprland
+                },
+            }
+
+            require('nvim-treesitter.configs').setup({
+                -- Asegúrate de que los parsers necesarios estén instalados
+                ensure_installed = { 
+                    "c", "cpp", "javascript", "html", "css", "go", "rust", 
+                    "ini", "hyprlang", "json", "lua", "python", "svelte", 
+                    "typescript", "tsx", "yaml" 
+                },
+                -- Habilita el resaltado de sintaxis basado en Tree-sitter
+                highlight = {
+                    enable = true,  -- Habilita el resaltado de sintaxis
+                    additional_vim_regex_highlighting = false,  -- Desactiva el resaltado basado en regex
+                },
+                -- Configuración para la indentación automática
+                indent = {
+                    enable = true,  -- Habilita la indentación automática
+                },
+                -- Configuración opcional para el refactor y otras características
+                refactor = {
+                    highlight_definitions = { enable = true },
+                    highlight_current_scope = { enable = true },
+                },
+                -- Playground para depurar árboles sintácticos
+                playground = {
+                    enable = true,
+                    disable = {},
+                    updatetime = 25, -- Actualiza el playground cada 25 ms
+                    persist_queries = false, -- No guarda las consultas
+                },
+                -- Configuración para `textobjects`
+                textobjects = {
+                    select = {
+                        enable = true,
+                        lookahead = true,  -- Permite la selección basada en el contexto
+                        keymaps = {
+                            ['aa'] = '@parameter.outer',  -- Selecciona parámetros
+                            ['ia'] = '@parameter.inner',  -- Selecciona el contenido de un parámetro
+                            ['af'] = '@function.outer',   -- Selecciona funciones
+                            ['if'] = '@function.inner',   -- Selecciona el contenido de una función
+                        },
+                    },
+                },
+            })
+
+            -- Configuración de comentarios para Hyprland usando Comment.nvim
+            local ft = require('Comment.ft')
+            ft.hyprlang = '#%s'  -- Define el símbolo de comentario para Hyprland
+        end
+    },
+
+    -- comment ft plugin
+    {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup({
+                padding = true,  -- Añade espacios alrededor de los comentarios
+                mapping = '<leader>/',  -- Mapeo para comentarios
+            })
+        end
+    },
+
+
     {
       'eandrju/cellular-automaton.nvim',
       config = function()
@@ -39,6 +118,7 @@ return {
             }
         end
     },
+
 
 
     -- Plugin para Discord Rich Presence
@@ -343,11 +423,11 @@ return {
     },
 
 
-    -- Plugin Polyglot
-    {
-        'sheerun/vim-polyglot',
-        -- Polyglot no requiere configuración adicional por defecto
-    },
+    -- -- Plugin Polyglot
+    -- {
+    --     'sheerun/vim-polyglot',
+    --     -- Polyglot no requiere configuración adicional por defecto
+    -- },
 
     -- Barra de estado Lualine
     {
@@ -373,54 +453,6 @@ return {
         end
     },
 
-
-        -- nvim-treesitter
-    {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate',  -- Actualiza los parsers cuando se instala
-        config = function()
-            require('nvim-treesitter.configs').setup({
-                -- Asegúrate de que los parsers necesarios estén instalados
-                ensure_installed = { "c", "cpp", "javascript", "html", "css", "go", "rust", "ini" },
-                -- Habilita el resaltado de sintaxis basado en Tree-sitter
-                highlight = {
-                    enable = false,  -- Habilita el resaltado de sintaxis
-                    additional_vim_regex_highlighting = false,  -- Desactiva el resaltado de sintaxis basado en regex
-                },
-                -- Configuración para la indentación automática
-                indent = {
-                    enable = true,  -- Habilita la indentación automática
-                },
-                -- Configuración opcional para el refactor y otras características
-                refactor = {
-                    highlight_definitions = { enable = true },
-                    highlight_current_scope = { enable = true },
-                },
-
-                -- Opcional: Configuración para el complemento `playground` para depurar árboles sintácticos
-                playground = {
-                    enable = true,
-                    disable = {},
-                    updatetime = 25, -- Actualiza el playground cada 25 ms
-                    persist_queries = false, -- Guarda las consultas para la depuración
-                },
-
-                -- Opcional: Configuración para el complemento `textobjects`
-                textobjects = {
-                    select = {
-                        enable = true,
-                        lookahead = true,  -- Permite la selección basada en el contexto
-                        keymaps = {
-                            ['aa'] = '@parameter.outer',  -- Selecciona parámetros
-                            ['ia'] = '@parameter.inner',  -- Selecciona el contenido de un parámetro
-                            ['af'] = '@function.outer',  -- Selecciona funciones
-                            ['if'] = '@function.inner',  -- Selecciona el contenido de una función
-                        },
-                    },
-                },
-            })
-        end
-    },
 
     {
         'mg979/vim-visual-multi',
