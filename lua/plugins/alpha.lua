@@ -67,6 +67,7 @@ return {
             dashboard.button("SPC uml", "󱡀  > Ir a UMLPractice", "<cmd>e ~/Documents/repos/UML-Practice<CR>"),
 			dashboard.button("l", "Set neovide's transparency to 0.92", "<cmd>let g:neovide_transparency=0.92<CR>"),
 			dashboard.button("SPC dsi", "[DSI-UC] > Ir a DSI-CU", "<cmd>e ~/Documents/repos/G10-ImplementacionCU<CR>"),
+
             dashboard.button("q", " > Quit NVIM", "<cmd>qa<CR>"),
             -- para ir a el proyecto de gy-sis
             dashboard.button("SPC gysis", "  > Ir a GY-SIS", "<cmd>e ~/Documents/repos/gy-sis<CR>"),
