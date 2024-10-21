@@ -232,8 +232,8 @@ vim.cmd [[highlight EasyMotionShade ctermbg=darkgray guibg=darkgray]]
 -- transparencia para neovide
 -- debe ser algo parecido a esto dashboard.button("l", "Set neovide's transparency to 0.92", "<cmd>let g:neovide_transparency=0.92<CR>"),
 
-vim.api.nvim_set_keymap('n', '<leader>l', ':let g:neovide_transparency=0.90<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>o', ':let g:neovide_transparency=1<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>ll', ':let g:neovide_transparency=0.90<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>lo', ':let g:neovide_transparency=1<CR>', { noremap = true, silent = true })
 
 
 ------------------------------------------------------------------------------------------

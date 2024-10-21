@@ -29,7 +29,7 @@ return {
                 ensure_installed = { 
                     "c", "cpp", "javascript", "html", "css", "go", "rust", 
                     "ini", "hyprlang", "json", "lua", "python", "svelte", 
-                    "typescript", "tsx", "yaml" 
+                    "typescript", "tsx", "yaml", "bash", "dockerfile", "jsonc",
                 },
                 -- Habilita el resaltado de sintaxis basado en Tree-sitter
                 highlight = {
