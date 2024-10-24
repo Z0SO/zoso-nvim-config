@@ -51,13 +51,16 @@ vim.api.nvim_set_keymap('n', '<C-M-k>', '<C-w>k', { noremap = true, silent = tru
 vim.api.nvim_set_keymap('n', '<C-M-l>', '<C-w>l', { noremap = true, silent = true })
 
 
--- Atajos para dividir la ventana
-vim.api.nvim_set_keymap('n', '<leader>tt', ':vsp<CR>', { noremap = true, silent = true }) -- Ventana vertical
-vim.api.nvim_set_keymap('n', '<leader>tg', ':sp<CR>', { noremap = true, silent = true }) -- Ventana horizontal
+-- Atajos para dividir la ventana verticalmente
+vim.api.nvim_set_keymap('n', '<leader>tt', ':vsp<CR>', { noremap = true, silent = true })
+
+-- Atajos para dividir la ventana horizontalmente
+vim.api.nvim_set_keymap('n', '<leader>tg', ':sp<CR>', { noremap = true, silent = true })
+
 
 -- Atajos para redimensionar ventanas
-vim.api.nvim_set_keymap('n', '<leader>=', ':resize +5<CR>', { noremap = true, silent = true }) -- Aumentar altura
-vim.api.nvim_set_keymap('n', '<leader>-', ':resize -5<CR>', { noremap = true, silent = true }) -- Disminuir altura
+vim.api.nvim_set_keymap('n', '<leader>=', ':resize +7<CR>', { noremap = true, silent = true }) -- Aumentar altura
+vim.api.nvim_set_keymap('n', '<leader>-', ':resize -7<CR>', { noremap = true, silent = true }) -- Disminuir altura
 vim.api.nvim_set_keymap('n', '<leader>>', ':vertical resize +5<CR>', { noremap = true, silent = true }) -- Aumentar ancho
 vim.api.nvim_set_keymap('n', '<leader><', ':vertical resize -5<CR>', { noremap = true, silent = true }) -- Disminuir ancho
 
@@ -206,10 +209,15 @@ vim.g.VM_maps = {
 ------------------------------------------------------------------------------------------
 -- Configuración de EasyMotion
 ------------------------------------------------------------------------------------------
+
 vim.g.EasyMotion_leader_key = '<Leader><Leader>'
+--
 vim.api.nvim_set_keymap('n', '<Leader><Leader>b', '<Plug>(easymotion-b)', {})
+
 vim.api.nvim_set_keymap('n', '<Leader><Leader>j', '<Plug>(easymotion-j)', {})
 vim.api.nvim_set_keymap('n', '<Leader><Leader>k', '<Plug>(easymotion-k)', {})
+
+-- para buscar caracteres
 vim.api.nvim_set_keymap('n', '<Leader><Leader>f', '<Plug>(easymotion-f)', {})
 vim.api.nvim_set_keymap('n', '<Leader><Leader>t', '<Plug>(easymotion-t)', {})
 
@@ -229,15 +237,21 @@ vim.cmd [[highlight EasyMotionTarget cterm=bold ctermbg=red guibg=red]]
 vim.cmd [[highlight EasyMotionShade ctermbg=darkgray guibg=darkgray]]
 
 
+
+------------------------------------------------------------------------------------------
+--- Transparencia para Neovide
+------------------------------------------------------------------------------------------
 -- transparencia para neovide
 -- debe ser algo parecido a esto dashboard.button("l", "Set neovide's transparency to 0.92", "<cmd>let g:neovide_transparency=0.92<CR>"),
 
-vim.api.nvim_set_keymap('n', '<leader>l', ':let g:neovide_transparency=0.90<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>o', ':let g:neovide_transparency=1<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>ll', ':let g:neovide_transparency=0.90<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>lo', ':let g:neovide_transparency=1<CR>', { noremap = true, silent = true })
+
 
 
 ------------------------------------------------------------------------------------------
 -- Atajos de teclado para navegar entre pestañas
+------------------------------------------------------------------------------------------
 vim.api.nvim_set_keymap('n', '<Tab>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
 

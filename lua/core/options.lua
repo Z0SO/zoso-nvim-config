@@ -4,8 +4,22 @@
 
 -- Neovide: factor de escalado de la fuente
 
+-- para pantallas de 1080p
 vim.g.neovide_scale_factor = 0.65  -- Cambia este valor al tamaño que prefieras
 
+--------------------------------------------------
+--- CONFIGURACIÓN DE TEMAS
+--------------------------------------------------
+
+-- para seleccionar el modo oscuro
+vim.opt.background = 'dark'
+
+-- para el modo claro
+-- vim.opt.background = 'light'
+
+
+
+--------------------------------------------------
 
 -- Opcional: Configura opciones básicas
 vim.o.number = true
@@ -28,7 +42,9 @@ vim.g.user_emmet_leader_key = '<C-e>' -- Usa Ctrl+e como atajo para expandir abr
 
 -- Configuración de la barra lateral
 -- barra lateral a la derecha
-vim.g.nvim_tree_side = 'right'
+-- vim.g.nvim_tree_side = 'right'
+-- vim.g.nvim_tree_side = 'left'
+-- vim.g.nvim_tree_width = 30
 
 
 --------------------------------------------------

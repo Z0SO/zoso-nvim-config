@@ -4,6 +4,8 @@ require('plugins.themes')
 require('plugins.lsp.init')
 require('plugins.tailwind-plugins')
 
+require('plugins.markdown-plugins')
+
 return {
 
 
@@ -29,7 +31,7 @@ return {
                 ensure_installed = { 
                     "c", "cpp", "javascript", "html", "css", "go", "rust", 
                     "ini", "hyprlang", "json", "lua", "python", "svelte", 
-                    "typescript", "tsx", "yaml" 
+                    "typescript", "tsx", "yaml", "bash", "dockerfile", "jsonc",
                 },
                 -- Habilita el resaltado de sintaxis basado en Tree-sitter
                 highlight = {
@@ -66,23 +68,32 @@ return {
                     },
                 },
             })
-
-            -- Configuración de comentarios para Hyprland usando Comment.nvim
-            local ft = require('Comment.ft')
-            ft.hyprlang = '#%s'  -- Define el símbolo de comentario para Hyprland
         end
     },
 
+     -- vim-commentary
+     {
+         'tpope/vim-commentary',
+         config = function()
+             -- Opcional: Configuración específica para vim-commentary
+             -- para que tenga en cuenta comentarios en archivos .svelte
+             vim.cmd [[
+               autocmd FileType svelte setlocal commentstring=/*\ %s\ */
+               autocmd FileType svelte setlocal commentstring=//\ %s
+               autocmd FileType svelte setlocal commentstring=<!--\ %s\ -->
+             ]]
+         end
+     },
     -- comment ft plugin
-    {
-        'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup({
-                padding = true,  -- Añade espacios alrededor de los comentarios
-                mapping = '<leader>/',  -- Mapeo para comentarios
-            })
-        end
-    },
+    -- {
+    --     'numToStr/Comment.nvim',
+    --     config = function()
+    --         require('Comment').setup({
+    --             padding = true,  -- Añade espacios alrededor de los comentarios
+    --             mapping = '<leader>/',  -- Mapeo para comentarios
+    --         })
+    --     end
+    -- },
 
 
     {
@@ -319,12 +330,6 @@ return {
   },
 
 
-
-
-
-
-
-
     -- para sintaxis de svelte y javascript
 
     -- Vim Javascript Syntax
@@ -408,19 +413,6 @@ return {
         end
     },
 
-    --  vim-commentary
-    {
-        'tpope/vim-commentary',
-        config = function()
-            -- Opcional: Configuración específica para vim-commentary
-            -- para que tenga en cuenta comentarios en archivos .svelte
-            vim.cmd [[
-              autocmd FileType svelte setlocal commentstring=/*\ %s\ */
-              autocmd FileType svelte setlocal commentstring=//\ %s
-              autocmd FileType svelte setlocal commentstring=<!--\ %s\ -->
-            ]]
-        end
-    },
 
 
     -- -- Plugin Polyglot
@@ -652,5 +644,6 @@ return {
             require('colorizer').setup()
         end
     },
+
 
 }
