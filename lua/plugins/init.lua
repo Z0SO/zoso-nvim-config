@@ -4,6 +4,8 @@ require('plugins.themes')
 require('plugins.lsp.init')
 require('plugins.tailwind-plugins')
 
+require('plugins.markdown-plugins')
+
 return {
 
 
@@ -642,5 +644,6 @@ return {
             require('colorizer').setup()
         end
     },
+
 
 }
