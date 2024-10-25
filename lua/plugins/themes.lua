@@ -49,6 +49,14 @@ return {
 		end
 	},
 
+    -- Tema jaredgorski/SpaceCamp
+    {
+        "jaredgorski/SpaceCamp",
+        config = function()
+            -- vim.cmd("colorscheme spacecamp")
+        end,
+    },
+
 	-- Tema Gotham
 	{
 		'whatyouhide/vim-gotham',
