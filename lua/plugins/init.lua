@@ -1,4 +1,3 @@
--- para importar alpha.lua desde .
 require('plugins.alpha')
 require('plugins.themes')
 require('plugins.lsp.init')
@@ -201,51 +200,12 @@ return {
       --     'DaikyXendo/nvim-material-icon',
       --   },
 
-      -- -- Plugin para íconos de material design
-      -- {
-      --   'DaikyXendo/nvim-material-icon',
-      -- },
-
       -- Plugin para íconos web-devicons
       {
         'nvim-tree/nvim-web-devicons',
         config = function()
           -- Configuración de nvim-web-devicons
           require('nvim-web-devicons').setup({
-            override = {
-              -- Personaliza íconos para carpetas específicas
-              src = {
-                icon = "",
-                color = "#ffbc00",
-                cterm_color = "220",
-                name = "source"
-              },
-              build = {
-                icon = "",
-                color = "#f28b50",
-                cterm_color = "208",
-                name = "build"
-              },
-              assets = {
-                icon = "",
-                color = "#6d8086",
-                cterm_color = "59",
-                name = "assets"
-              },
-              core = {
-                icon = "",
-                color = "#c3e88d",
-                cterm_color = "121",
-                name = "core"
-              },
-              docs = {
-                icon = "",
-                color = "#ffcb6b",
-                cterm_color = "220",
-                name = "docs"
-              },
-              -- Añade más personalizaciones según tus necesidades
-            },
             color_icons = true,
             default = true,
           })
@@ -255,12 +215,13 @@ return {
         end
       },
 
+
       -- Plugin para nvim-tree
       {
         'nvim-tree/nvim-tree.lua',
         dependencies = {
-          'DaikyXendo/nvim-material-icon', 
-          'nvim-tree/nvim-web-devicons'
+
+            'nvim-tree/nvim-web-devicons'
         },
         config = function()
           -- Configuración de nvim-tree
@@ -269,8 +230,8 @@ return {
             respect_buf_cwd = true,    -- Respeta el directorio del buffer activo
             
             view = {
-              side = 'right', -- Configura el árbol para que se abra a la derecha
-              width = 40,    -- Ancho de la ventana del árbol (ajusta según tu preferencia)
+              side = 'left', -- Configura el árbol para que se abra a la derecha
+              width = 30,    -- Ancho de la ventana del árbol (ajusta según tu preferencia)
             },
             update_focused_file = {
               enable = true,       -- Habilita la actualización del archivo actual
@@ -405,7 +366,7 @@ return {
         end,
       },
 
-
+    --lspkind-nvim es un plugin que añade iconos a las sugerencias de autocompletado
     {
         'onsails/lspkind-nvim',
         config = function()
