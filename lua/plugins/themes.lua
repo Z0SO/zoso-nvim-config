@@ -20,6 +20,16 @@ return {
 		end
 	},
 
+    --Tema nanotech/jellybeans.vim
+    {
+        "nanotech/jellybeans.vim",
+        as = "jellybeans",
+        config = function()
+            -- Configuración del tema
+            vim.cmd("colorscheme jellybeans")
+        end,
+    },
+
 	-- Tema gruvbox
 	{
 		'morhetz/gruvbox',
@@ -79,6 +89,44 @@ return {
         end,
     },
 
+    -- Tema iceberg
+    {
+        "cocopon/iceberg.vim",
+        config = function()
+            -- vim.cmd("colorscheme iceberg")
+        end,
+    },
+
+    -- Tema tokyonight
+    {
+        "folke/tokyonight.nvim",
+        config = function()
+            vim.g.tokyonight_style = "night"
+            vim.g.tokyonight_italic_functions = true
+            vim.g.tokyonight_italic_variables = true
+            vim.g.tokyonight_italic_keywords = true
+            vim.g.tokyonight_italic_comments = true
+            vim.g.tokyonight_italic_strings = true
+            vim.g.tokyonight_italic_types = true
+            vim.g.tokyonight_transparent = false
+            vim.g.tokyonight_hide_inactive_statusline = true
+            vim.g.tokyonight_dark_sidebar = true
+            vim.g.tokyonight_dark_float = true
+            vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
+            -- vim.cmd("colorscheme tokyonight")
+        end,
+    },
+
+
+    -- Tema sonokai
+    {
+        "sainnhe/sonokai",
+        config = function()
+            vim.cmd("colorscheme sonokai") 
+        end,
+    },
+
+
 	-- Tema Oxocarbon
 	{
 		"nyoom-engineering/oxocarbon.nvim",
@@ -93,5 +141,28 @@ return {
 			-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 		end,
 	},
+
+
+    -- Tema Nightfox
+    {
+        "EdenEast/nightfox.nvim",
+        config = function()
+            -- Configuración del tema
+            require("nightfox").load()
+        end,
+    },
+
+    -- Tema challenger-deep-theme/vim
+    {
+        "challenger-deep-theme/vim",
+        as = "challenger_deep",
+        
+        config = function()
+            -- Configuración del tema
+            -- vim.cmd("colorscheme challenger_deep")
+        end,
+    },
+
+
 
 }
