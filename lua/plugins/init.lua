@@ -457,7 +457,7 @@ return {
 
 
 
-    -- nvim-autopairs
+    -- nvim-autopairs -> Autocompletado de pares de caracteres (como paréntesis, corchetes, comillas, etc.)
     {
         'windwp/nvim-autopairs',
         config = function()
@@ -546,7 +546,7 @@ return {
         end
     },
 
-    -- Configuración para nvim-cmp
+    -- Configuración para nvim-cmp -> Autocompletado avanzado
     {
         'hrsh7th/nvim-cmp',
         requires = {
