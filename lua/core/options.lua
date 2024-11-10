@@ -67,4 +67,13 @@ vim.g.clipboard = {
     cache_enabled = 0
 }
 
+-- para ulitizar los dev icons en nvim-tree
+vim.g.nvim_tree_show_icons = {
+    git = 1,
+    folders = 1,
+    files = 1,
+    folder_arrows = 1,
+}
+
+
 
