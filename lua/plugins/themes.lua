@@ -3,6 +3,16 @@
 
 
 return {
+
+    -- Tema Falcon: fenetikm/falcon
+    {
+        "fenetikm/falcon",
+        config = function()
+            -- Configuración del tema
+            vim.cmd("colorscheme falcon")
+        end,
+    },
+
 	-- Tema Dracula
 	{
 		'dracula/vim',
