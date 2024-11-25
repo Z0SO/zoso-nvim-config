@@ -1,8 +1,21 @@
 -- Temas
-
-
-
 return {
+    {
+        "shaunsingh/nord.nvim",
+        config = function()
+            -- Configuración del tema
+            vim.cmd("colorscheme nord")
+        end,
+    },
+
+    -- Badacadabra/vim-archery
+    {
+        "Badacadabra/vim-archery",
+        config = function()
+            -- Configuración del tema
+            vim.cmd("colorscheme archery")
+        end,
+    },
 
     -- Tema Falcon: fenetikm/falcon
     {
@@ -165,7 +178,7 @@ return {
     -- Tema challenger-deep-theme/vim
     {
         "challenger-deep-theme/vim",
-        as = "challenger_deep",
+        as = 'challenger_deep',
         
         config = function()
             -- Configuración del tema
