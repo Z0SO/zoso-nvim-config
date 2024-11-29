@@ -5,7 +5,7 @@
 -- Neovide: factor de escalado de la fuente
 
 -- para pantallas de 1080p
-vim.g.neovide_scale_factor = 0.65  -- Cambia este valor al tamaño que prefieras
+vim.g.neovide_scale_factor = 0.72  -- Cambia este valor al tamaño que prefieras
 
 --------------------------------------------------
 --- CONFIGURACIÓN DE TEMAS
